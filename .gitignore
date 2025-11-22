@@ -17,6 +17,9 @@ build/
 # Config files (contains API keys)
 config.json
 
+# Learning/teaching notes
+TEACHING.md
+
 # Logs
 logs/
 *.log
