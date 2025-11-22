@@ -24,20 +24,40 @@
     "gpt",
     "claude",
     "gemini",
+    "openai",
+    "anthropic",
+    "google",
+    "deepseek",
     "llm",
     "chat",
-    "terminal"
+    "chatbot",
+    "terminal",
+    "command-line",
+    "ai-assistant",
+    "coding-assistant",
+    "code-completion",
+    "70-models",
+    "multi-model"
   ],
-  "author": "MegaLLM Team",
+  "author": "YashSensei <yashsensei@devsindia.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YashSensei/megacli_final.git"
+    "url": "https://github.com/YashSensei/megacli.git"
   },
   "bugs": {
-    "url": "https://github.com/YashSensei/megacli_final/issues"
+    "url": "https://github.com/YashSensei/megacli/issues"
   },
-  "homepage": "https://github.com/YashSensei/megacli_final#readme",
+  "homepage": "https://github.com/YashSensei/megacli#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
   "engines": {
     "node": ">=18.0.0"
   },
