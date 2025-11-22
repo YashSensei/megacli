@@ -82,26 +82,26 @@ megacli/
 
 ## 🚀 MVP Features
 
-### Phase 1: Foundation (Week 1)
+### Phase 1: Foundation (Week 1) ✅
 **Goal:** Get basic project structure and build pipeline working
 
-- [ ] Initialize Node.js/TypeScript project
-- [ ] Configure package.json with proper scripts
-- [ ] Set up tsconfig.json for optimal TypeScript compilation
-- [ ] Create folder structure
-- [ ] Set up build process (compile TS to JS)
-- [ ] Create basic CLI skeleton with Commander.js
-- [ ] Add .gitignore and .env.example
-- [ ] Test: `megacli --version` and `megacli --help` work
+- [x] Initialize Node.js/TypeScript project
+- [x] Configure package.json with proper scripts
+- [x] Set up tsconfig.json for optimal TypeScript compilation
+- [x] Create folder structure
+- [x] Set up build process (compile TS to JS)
+- [x] Create basic CLI skeleton with Commander.js
+- [x] Add .gitignore and .env.example
+- [x] Test: `megacli --version` and `megacli --help` work
 
 **Success Criteria:**
-- CLI installs globally with `npm install -g`
-- TypeScript compiles without errors
-- Help command shows available commands
+- ✅ CLI installs globally with `npm install -g`
+- ✅ TypeScript compiles without errors
+- ✅ Help command shows available commands
 
 ---
 
-### Phase 2: Authentication System (Week 1)
+### Phase 2: Authentication System (Week 1) ✅
 **Goal:** Secure API key management
 
 #### Commands to Implement:
@@ -113,50 +113,55 @@ megacli auth test            # Test API key validity
 ```
 
 #### Implementation Details:
-- [ ] Create config storage using Conf library
-- [ ] Store API keys in `~/.config/megacli/config.json`
-- [ ] Implement API key validation
-- [ ] Add pretty prompts for key entry
-- [ ] Handle invalid keys gracefully
-- [ ] Add environment variable fallback (`MEGALLM_API_KEY`)
+- [x] Create config storage using Conf library
+- [x] Store API keys in `~/.config/megacli/config.json`
+- [x] Implement API key validation
+- [x] Add pretty prompts for key entry
+- [x] Handle invalid keys gracefully
+- [x] Add environment variable fallback (`MEGALLM_API_KEY`)
 
 **Success Criteria:**
-- API key stored securely
-- Can authenticate with MegaLLM API
-- Clear error messages for invalid keys
-- Works cross-platform (Windows, Mac, Linux)
+- ✅ API key stored securely
+- ✅ Can authenticate with MegaLLM API
+- ✅ Clear error messages for invalid keys
+- ✅ Works cross-platform (Windows, Mac, Linux)
 
 ---
 
-### Phase 3: Basic Chat Interface (Week 2)
+### Phase 3: Basic Chat Interface (Week 2) ✅
 **Goal:** Interactive chat with AI models
 
 #### Commands to Implement:
 ```bash
 megacli chat                 # Start chat with default model
 megacli chat -m gpt-5        # Chat with specific model
-megacli chat --stream        # Enable streaming responses
 megacli chat --system "..."  # Set system prompt
+megacli chat -t 1.5          # Set temperature
+megacli chat --max-tokens 500 # Limit response length
 ```
 
 #### Features:
-- [ ] Create chat loop with user input
-- [ ] Integrate OpenAI SDK with MegaLLM base URL
-- [ ] Implement message history
-- [ ] Add streaming support for real-time responses
-- [ ] Pretty formatting for AI responses
-- [ ] Special commands in chat:
+- [x] Create chat loop with user input
+- [x] Integrate OpenAI SDK with MegaLLM base URL
+- [x] Implement message history
+- [x] Pretty formatting for AI responses
+- [x] Token usage tracking
+- [x] Parameter validation (temperature, max-tokens)
+- [x] Special commands in chat:
   - `/exit` or `/quit` - Exit chat
   - `/clear` - Clear conversation
   - `/models` - List available models
   - `/switch <model>` - Change model
   - `/help` - Show commands
+  - `/info` - Show current settings
+- [x] Graceful exit handling (Ctrl+C)
 
 **Success Criteria:**
-- Smooth conversation flow
-- Responses appear with nice formatting
-- Can switch models mid-conversation
-- Works with all MegaLLM-supported models
+- ✅ Smooth conversation flow
+- ✅ Responses appear with nice formatting
+- ✅ Can switch models mid-conversation
+- ✅ Works with all MegaLLM-supported models
+- ✅ Accurate token counting
 
 ---
 

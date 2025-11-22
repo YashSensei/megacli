@@ -1,0 +1,46 @@
+# Ignore build output
+dist/
+build/
+*.tsbuildinfo
+
+# Ignore dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore compiled files
+*.js.map
+*.d.ts.map
+
+# Ignore generated documentation
+docs/
+
+# Ignore coverage reports
+coverage/
+.nyc_output/
+
+# Ignore logs
+*.log
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor specific files
+.vscode/
+.idea/
+
+# Ignore markdown files (they have their own formatting)
+*.md
+
+# Ignore configuration files that need specific formatting
+.env
+.env.*
+
+# Ignore LICENSE file
+LICENSE
+
+# Ignore git files
+.gitignore
+.gitattributes

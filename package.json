@@ -1,0 +1,77 @@
+{
+  "name": "megacli",
+  "version": "0.1.0",
+  "description": "Official CLI for MegaLLM - Access 70+ AI models from your terminal",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "megacli": "./bin/megacli.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "watch": "tsc --watch",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ai",
+    "cli",
+    "megallm",
+    "gpt",
+    "claude",
+    "gemini",
+    "llm",
+    "chat",
+    "terminal"
+  ],
+  "author": "MegaLLM Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YashSensei/megacli_final.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YashSensei/megacli_final/issues"
+  },
+  "homepage": "https://github.com/YashSensei/megacli_final#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "openai": "^4.68.4",
+    "commander": "^12.1.0",
+    "inquirer": "^11.1.0",
+    "chalk": "^5.3.0",
+    "ora": "^8.1.1",
+    "boxen": "^8.0.1",
+    "gradient-string": "^3.0.0",
+    "cli-table3": "^0.6.5",
+    "conf": "^13.0.1",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "fs-extra": "^11.2.0",
+    "glob": "^11.0.0",
+    "execa": "^9.5.2",
+    "figlet": "^1.8.0",
+    "cli-spinners": "^3.2.0",
+    "strip-ansi": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/inquirer": "^9.0.7",
+    "@types/figlet": "^1.5.8",
+    "@types/fs-extra": "^11.0.4",
+    "typescript": "^5.7.2",
+    "tsx": "^4.19.2",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.15.0",
+    "prettier": "^3.3.3",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.14"
+  }
+}
