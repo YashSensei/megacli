@@ -12,7 +12,6 @@ config();
 import { createAuthCommand } from './commands/auth.js';
 import { createChatCommand } from './commands/chat.js';
 import { createModelsCommand } from './commands/models.js';
-import { codeCommand } from './commands/code.js';
 
 const program = new Command();
 
@@ -20,15 +19,15 @@ const program = new Command();
 function showBanner() {
   try {
     console.log(
-      gradient.passion.multiline(
+      gradient.pastel.multiline(
         figlet.textSync('MegaCLI', {
           font: 'ANSI Shadow',
-          horizontalLayout: 'fitted',
+          horizontalLayout: 'default',
         })
       )
     );
-    console.log(chalk.cyan.bold('  🚀 Access 70+ AI Models from Your Terminal\n'));
-    console.log(chalk.gray('  Official CLI for MegaLLM • https://megallm.io\n'));
+    console.log(chalk.cyan('  Access 70+ AI models from your terminal\n'));
+    console.log(chalk.gray('  Powered by MegaLLM • https://megallm.io\n'));
   } catch (error) {
     // Fallback if figlet fails
     console.log(chalk.cyan.bold('\n  MegaCLI\n'));
@@ -61,10 +60,14 @@ program.addCommand(createChatCommand());
 // Add models command
 program.addCommand(createModelsCommand());
 
-// Add code command
-program.addCommand(codeCommand);
-
 // Placeholder commands (will be implemented later)
+program
+  .command('code')
+  .description('Start coding assistant')
+  .action(() => {
+    console.log(chalk.yellow('⚠️  Code command coming soon!'));
+    console.log(chalk.gray('This will start the agentic coding assistant.'));
+  });
 
 program
   .command('ask <question>')

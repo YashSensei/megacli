@@ -9,6 +9,7 @@ export interface MegaLLMConfig {
   maxTokens?: number;
   theme?: 'auto' | 'light' | 'dark';
   saveHistory?: boolean;
+  trustedWorkspaces?: string[];
 }
 
 export interface ChatMessage {
@@ -44,37 +45,18 @@ export interface ModelInfo {
 export interface APIError {
   code: string;
   message: string;
-  type: 'authentication' | 'rate_limit' | 'invalid_request' | 'server_error' | 'quota_exceeded';
-  tier?: string;
-  limit?: number;
-  used?: number;
-  resetTime?: Date;
-  upgradeUrl?: string;
+  type: 'authentication' | 'rate_limit' | 'validation' | 'server';
+  details?: Record<string, unknown>;
 }
 
-export interface UsageStats {
-  tier: string;
-  status: 'active' | 'inactive' | 'expired';
-  tokensUsed: number;
-  tokensLimit: number;
-  requestsUsed: number;
-  requestsLimit: number;
-  cost: number;
-  budget?: number;
-  resetDate: Date;
-  rateLimit: {
-    requestsPerMinute: number;
-    tokensPerMinute: number;
+export interface ChatResponse {
+  id: string;
+  model: string;
+  content: string;
+  usage: {
+    promptTokens: number;
+    completionTokens: number;
+    totalTokens: number;
   };
-}
-
-export interface CommandOptions {
-  model?: string;
-  system?: string;
-  stream?: boolean;
-  temperature?: number;
-  maxTokens?: number;
-  json?: boolean;
-  verbose?: boolean;
-  file?: string;
+  timestamp: Date;
 }

@@ -58,9 +58,6 @@
     "README.md",
     "LICENSE"
   ],
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "dependencies": {
     "axios": "^1.7.9",
     "boxen": "^8.0.1",

@@ -10,6 +10,7 @@ const CONFIG_DEFAULTS: Partial<MegaLLMConfig> = {
   maxTokens: 2048,
   theme: 'auto',
   saveHistory: true,
+  trustedWorkspaces: [],
 };
 
 class ConfigManager {
@@ -103,6 +104,21 @@ class ConfigManager {
       valid: errors.length === 0,
       errors,
     };
+  }
+
+  // Check if workspace is trusted
+  isWorkspaceTrusted(workspacePath: string): boolean {
+    const trustedWorkspaces = this.get('trustedWorkspaces') as string[] || [];
+    return trustedWorkspaces.includes(workspacePath);
+  }
+
+  // Add workspace to trusted list
+  trustWorkspace(workspacePath: string): void {
+    const trustedWorkspaces = this.get('trustedWorkspaces') as string[] || [];
+    if (!trustedWorkspaces.includes(workspacePath)) {
+      trustedWorkspaces.push(workspacePath);
+      this.set('trustedWorkspaces', trustedWorkspaces);
+    }
   }
 }
 

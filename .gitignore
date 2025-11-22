@@ -1,59 +1,14 @@
-# Dependencies
 node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
-# Build output
 dist/
-build/
-*.tsbuildinfo
-
-# Environment variables
 .env
 .env.local
-.env.*.local
-
-# Config files (contains API keys)
-config.json
-
-# Learning/teaching notes
-TEACHING.md
-
-# Logs
-logs/
+.DS_Store
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# Editor directories and files
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-
-# Test coverage
-coverage/
-.nyc_output/
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# OS files
-.DS_Store
-desktop.ini
-
-# Debug
-.vscode-test/
-*.cpuprofile
+test.md
+teaching.mdle
 
 # add teaching.md file here 
-teaching.md
+TEACHING.md
+test.md
