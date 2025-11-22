@@ -51,3 +51,6 @@ desktop.ini
 # Debug
 .vscode-test/
 *.cpuprofile
+
+# add teaching.md file here 
+teaching.md

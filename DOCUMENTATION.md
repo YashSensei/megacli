@@ -211,13 +211,13 @@ Available for all commands:
 
 ### Command Overview
 
-| Command | Description |
-|---------|-------------|
-| `megacli auth` | Authentication management |
-| `megacli chat` | Interactive chat interface |
-| `megacli ask` | One-shot questions |
-| `megacli code` | Agentic coding assistant |
-| `megacli models` | Model management |
+| Command | Description | Status |
+|---------|-------------|--------|
+| `megacli auth` | Authentication management | ✅ Complete |
+| `megacli chat` | Interactive chat interface | ✅ Complete |
+| `megacli models` | Model management | ✅ Complete |
+| `megacli code` | Agentic coding assistant | 🚧 Coming Soon |
+| `megacli ask` | One-shot questions | 🚧 Coming Soon |
 
 ---
 
@@ -242,12 +242,10 @@ megacli chat --stream
 ### Chat Options
 
 ```bash
--m, --model <model>          Model to use (default: gpt-4o-mini)
+-m, --model <model>          Model to use (default: claude-haiku-4-5-20251001)
 -s, --system <prompt>        System prompt
---stream                     Enable streaming responses
---temperature <number>       Temperature (0-2, default: 0.7)
---max-tokens <number>        Max response tokens
---no-history                 Disable conversation history
+-t, --temperature <number>   Temperature (0-2, default: 0.7)
+--max-tokens <number>        Max response tokens (default: 2048)
 ```
 
 ### In-Chat Commands
@@ -256,38 +254,48 @@ While in chat mode, you can use special commands:
 
 | Command | Description |
 |---------|-------------|
-| `/exit` or `/quit` | Exit chat |
+| `/exit` or `/quit` | Exit chat gracefully |
 | `/clear` | Clear conversation history |
-| `/models` | List available models |
-| `/switch <model>` | Change current model |
-| `/system <prompt>` | Update system prompt |
-| `/save <filename>` | Save conversation |
-| `/load <filename>` | Load conversation |
-| `/help` | Show available commands |
-| `/info` | Current model and settings |
+| `/models` | List available models by category |
+| `/switch <model>` | Change current model mid-conversation |
+| `/help` | Show all available commands |
+| `/info` | Show current settings and token usage |
 
 ### Example Session
 
 ```bash
 $ megacli chat
 
-╔═══════════════════════════════════════╗
-║      🚀 MegaCLI Chat Interface       ║
-║   Model: gpt-4o-mini | MegaLLM v1    ║
-╚═══════════════════════════════════════╝
+   ╭───────────── MegaCLI Chat ──────────────╮
+   │                                         │
+   │   🤖 Interactive Chat Mode              │
+   │                                         │
+   │   Model: Claude Haiku 4.5 (Anthropic)   │
+   │                                         │
+   ╰─────────────────────────────────────────╯
 
-You: Hello! Can you help me with TypeScript?
+Special commands:
+  /exit - Exit chat
+  /clear - Clear conversation history
+  /models - List available models
+  /switch <model> - Change model
+  /help - Show commands
+  /info - Show current settings
+
+✔ You: Hello! Can you help me with TypeScript?
 
 🤖 Assistant: Hello! I'd be happy to help you with TypeScript. 
 TypeScript is a strongly typed programming language that builds 
 on JavaScript. What specific aspect would you like to know about?
 
-You: /switch gpt-5
-✓ Switched to gpt-5
+✔ You: /switch gpt-5.1
+✓ Switched to GPT-5.1 (OpenAI)
 
-You: What's the difference between type and interface?
+✔ You: What's the difference between type and interface?
 
-🤖 GPT-5: Great question! Here are the key differences:
+⠹ Thinking...
+
+🤖 Assistant: Great question! Here are the key differences:
 
 1. **Syntax & Declaration Merging**
    - Interfaces can be merged (multiple declarations combine)
@@ -299,9 +307,52 @@ You: What's the difference between type and interface?
    
 [... continued response]
 
-You: /exit
-👋 Goodbye! Tokens used: 234
+✔ You: /info
+
+   ╭───────────── Info ──────────────╮
+   │                                 │
+   │   Current Session Info          │
+   │                                 │
+   ╰─────────────────────────────────╯
+
+Model: GPT-5.1 (OpenAI)
+Temperature: 0.7
+Max Tokens: 2048
+Messages: 4
+Tokens Used: 234
+
+✔ You: /exit
+
+──────────────────────────────────────────────────
+👋 Thanks for using MegaCLI!
+Total tokens used: 234
 ```
+
+### Available Models
+
+MegaCLI currently supports 22+ models across multiple providers:
+
+**Premium Models:**
+- GPT-5, GPT-5.1 (OpenAI)
+- Claude Opus 4.1, Claude Opus 4.5 (Anthropic)
+- Gemini 2.5 Pro, Gemini 3 Pro (Google)
+
+**Balanced Models:**
+- Claude Sonnet 4.5 (Anthropic)
+- OpenAI GPT-OSS 120B
+- DeepSeek V3, V3.5 (DeepSeek)
+
+**Fast/Cost-Effective Models:**
+- Claude Haiku 4.5 (Anthropic) - Default
+- Gemini 2.5 Flash, Gemini 3 Flash (Google)
+- OpenAI GPT-OSS 20B
+- Llama 3.3 70B (Meta)
+
+**Specialized Models:**
+- DeepSeek R1 (reasoning)
+- Qwen3 235B (multilingual)
+
+Use `/models` in chat to see the full categorized list!
 
 ---
 
@@ -315,63 +366,37 @@ megacli models list
 
 **Options:**
 ```bash
---provider <name>         Filter by provider (openai, anthropic, google)
---category <category>     Filter by category (fast, premium, vision)
---sort <field>            Sort by: name, price, context
---json                    Output as JSON
+-p, --provider <provider>    Filter by provider (openai, anthropic, google, meta, deepseek)
+-c, --category <category>    Filter by category (premium, balanced, fast, specialized)
 ```
 
 **Example Output:**
 ```
-┌──────────────────────────────────────────────────────┐
-│                   Available Models                    │
-├──────────────────┬──────────┬──────────┬─────────────┤
-│ Model            │ Provider │ Context  │ Price/1M    │
-├──────────────────┼──────────┼──────────┼─────────────┤
-│ gpt-5            │ OpenAI   │ 128K     │ $2.50       │
-│ claude-opus-4    │ Anthropic│ 200K     │ $15.00      │
-│ gemini-2.5-pro   │ Google   │ 1M       │ $1.25       │
-│ gpt-4o-mini      │ OpenAI   │ 128K     │ $0.15       │
-└──────────────────┴──────────┴──────────┴─────────────┘
+╭──── MegaLLM Models ─────╮
+│   22 Available Models   │
+╰─────────────────────────╯
 
-Total: 70+ models available
+💎 PREMIUM (5)
+────────────────────────────────────────────────────────
+Model ID                  Provider    Aliases
+────────────────────────────────────────────────────────
+gpt-5                     OpenAI      gpt5, gpt-5
+gpt-5.1                   OpenAI      gpt51, gpt-5.1
+claude-opus-4-1-20250805  Anthropic   claude-opus, opus
+...
 ```
 
 ### Model Information
 
 ```bash
-megacli models info <model-name>
+megacli models info <model-id>
 ```
+
+Shows detailed information about a specific model including ID, provider, category, aliases, description, and usage examples.
 
 **Example:**
 ```bash
-$ megacli models info gpt-5
-
-╔════════════════════════════════════════╗
-║            GPT-5 Details              ║
-╚════════════════════════════════════════╝
-
-Provider:        OpenAI
-Model ID:        gpt-5
-Context Length:  128,000 tokens
-Max Output:      16,384 tokens
-
-Pricing:
-  Input:  $2.50 per 1M tokens
-  Output: $10.00 per 1M tokens
-
-Capabilities:
-  ✓ Text generation
-  ✓ Code generation
-  ✓ Function calling
-  ✓ Vision (images)
-  ✓ JSON mode
-
-Best For:
-  • Complex reasoning tasks
-  • Advanced code generation
-  • Multi-step problem solving
-  • Technical analysis
+megacli models info gpt-5.1
 ```
 
 ### Search Models
@@ -380,24 +405,30 @@ Best For:
 megacli models search <query>
 ```
 
+Search for models by name, provider, or description.
+
 **Examples:**
 ```bash
-megacli models search "code"      # Models good for coding
-megacli models search "cheap"     # Cost-effective models
-megacli models search "claude"    # All Claude models
+megacli models search "claude"       # Find all Claude models
+megacli models search "reasoning"    # Find reasoning-focused models
+megacli models search "fast"         # Find fast/efficient models
 ```
 
 ---
 
 ## Agentic Coding Mode
 
-### Overview
+> **Note:** Agentic coding mode is planned for Phase 6. This feature will provide an AI assistant that can read and edit files in your project.
 
-Coding mode provides an AI assistant that can:
+### Planned Features
+
 - Read files in your project
-- Suggest code changes
-- Show diffs before applying
+- Suggest code changes with diffs
 - Edit multiple files
+- Understand project context
+- Generate boilerplate code
+
+**Coming Soon!**
 - Understand project context
 
 ### Starting Code Mode

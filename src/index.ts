@@ -11,6 +11,7 @@ config();
 // Import commands
 import { createAuthCommand } from './commands/auth.js';
 import { createChatCommand } from './commands/chat.js';
+import { createModelsCommand } from './commands/models.js';
 
 const program = new Command();
 
@@ -56,15 +57,10 @@ program.addCommand(createAuthCommand());
 // Add chat command
 program.addCommand(createChatCommand());
 
-// Placeholder commands (will be implemented later)
-program
-  .command('models')
-  .description('List available models')
-  .action(() => {
-    console.log(chalk.yellow('⚠️  Models command coming soon!'));
-    console.log(chalk.gray('This will list all 70+ available models.'));
-  });
+// Add models command
+program.addCommand(createModelsCommand());
 
+// Placeholder commands (will be implemented later)
 program
   .command('code')
   .description('Start coding assistant')

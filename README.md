@@ -38,7 +38,7 @@ megacli chat
 
 ## 🏗️ Project Status
 
-**Current Phase:** Phase 3 - Basic Chat Interface ✅
+**Current Phase:** Phase 4 - Model Management ✅
 
 - [x] TypeScript project setup
 - [x] Package.json configuration
@@ -49,7 +49,8 @@ megacli chat
 - [x] Model registry (22+ models)
 - [x] UI utilities
 - [x] Interactive chat interface
-- [ ] Model management commands (Next Phase)
+- [x] Model management commands (list/info/search)
+- [ ] UI polish and enhancements (Next Phase)
 
 ## 🎯 Usage
 
@@ -96,6 +97,29 @@ megacli chat -m gemini-flash -t 0.8 --max-tokens 1000
 - `/switch <model>` - Change to different model
 - `/clear` - Clear conversation history
 - `/exit` - Exit chat (or use Ctrl+C)
+
+### Model Management
+
+```bash
+# List all models
+megacli models list
+
+# Filter by category
+megacli models list --category fast
+megacli models list --category premium
+
+# Filter by provider
+megacli models list --provider anthropic
+megacli models list --provider openai
+
+# Get detailed model info
+megacli models info gpt-5.1
+megacli models info claude-haiku
+
+# Search for models
+megacli models search "claude"
+megacli models search "reasoning"
+```
 
 ## 🛠️ Development
 
