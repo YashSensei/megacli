@@ -29,10 +29,12 @@ megacli code
 - 🤖 **Interactive Chat** - Multi-turn conversations with 70+ AI models
 - 🔐 **Secure Authentication** - System-level API key storage (no .env files)
 - 🎯 **Model Management** - Browse, search, and switch between 22+ models
-- 💻 **AI Code Assistant** - Read files, search code, get AI suggestions
+- 💻 **AI Code Assistant** - Claude-like assistant with file operations & command execution
+- 🔒 **Workspace Trust** - Security prompts for file operations (like VS Code)
+- 📝 **File Operations** - AI can read and write files automatically
+- ⚡ **Command Execution** - AI runs PowerShell/bash commands autonomously
 - 🎨 **Beautiful UI** - Gradients, spinners, tables, and formatted output
-- ⚡ **Accurate Tokens** - Non-streaming for precise token tracking
-- 🔄 **Model Switching** - Change models mid-conversation with `/switch`
+- 🧠 **Smart Responses** - GitHub Copilot-style concise, analytical answers
 - 📊 **Token Usage** - Real-time tracking of input/output tokens
 - 🔍 **Code Search** - Find patterns across your entire codebase
 - 📂 **Project Analysis** - Auto-detect dependencies and structure
@@ -146,6 +148,17 @@ megacli code --task "find all TODO comments"
 megacli code --task "explain the config.ts file"
 ```
 
+#### 🚀 New: Claude-like Capabilities
+
+The AI assistant now works like Claude Code:
+
+- **🔒 Workspace Trust** - Security prompt on first run (remembers your choice)
+- **📖 Auto File Reading** - AI reads files silently using `Get-Content`
+- **✍️ Auto File Writing** - AI modifies files directly with `<write_file>` tags
+- **⚡ Command Execution** - AI runs PowerShell/bash commands with `<execute_command>`
+- **🧠 Smart Analysis** - GitHub Copilot-style responses (concise, analytical)
+- **🎯 Proactive Actions** - AI acts immediately without asking permission
+
 #### Available Commands in Code Mode
 
 - `/read <file>` - Read and analyze a file
@@ -156,7 +169,7 @@ megacli code --task "explain the config.ts file"
 - `/help` - Show all commands
 - `/exit` - Exit code assistant
 
-Or just describe what you want in natural language!
+Or just describe what you want in natural language - the AI will read files, run commands, and make changes automatically!
 
 ## 🛠️ Development
 

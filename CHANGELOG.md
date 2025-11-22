@@ -71,6 +71,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Concise terminal-friendly AI responses (max 15-20 lines)
 - Reduced token limit (1024) for faster responses
 
+#### Phase 7: Claude-like Code Assistant (Enhanced)
+- **Workspace Trust**: Security prompt asking user to trust directory (like VS Code)
+  - Remembers trusted workspaces in config
+  - Yellow warning box on first run
+  - Prevents file operations until user approves
+- **Automatic File Reading**: AI uses `Get-Content` to read files silently
+  - Output hidden from user (only shows in AI context)
+  - Works with PowerShell on Windows, bash on Linux/macOS
+  - Validates paths to prevent access outside working directory
+- **Automatic File Writing**: AI can modify files with `<write_file path="...">` tags
+  - Uses FileSystemManager for safe writes
+  - Tracks modified files in session
+  - Adds file changes to conversation context
+- **Command Execution**: AI runs shell commands with `<execute_command>` tags
+  - PowerShell integration on Windows
+  - Supports complex commands with pipes and arguments
+  - Hides output for read commands, shows output for actions
+- **GitHub Copilot-style Responses**: System prompt tuned for concise answers
+  - "Think → Get info silently → Answer clearly"
+  - 1-3 sentence responses (no file content dumps)
+  - Analytical and helpful (like GitHub Copilot)
+  - Proactive actions without asking permission
+- **Enhanced UX**: Claude Code-style welcome screen
+  - ASCII art banner
+  - Model info and working directory display
+  - Bullet points for AI messages
+  - Clean separators between exchanges
+
 ### Technical Details
 
 - **Language**: TypeScript 5.7.2 (strict mode)
