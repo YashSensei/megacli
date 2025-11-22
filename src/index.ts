@@ -12,6 +12,7 @@ config();
 import { createAuthCommand } from './commands/auth.js';
 import { createChatCommand } from './commands/chat.js';
 import { createModelsCommand } from './commands/models.js';
+import { codeCommand } from './commands/code.js';
 
 const program = new Command();
 
@@ -60,14 +61,10 @@ program.addCommand(createChatCommand());
 // Add models command
 program.addCommand(createModelsCommand());
 
+// Add code command
+program.addCommand(codeCommand);
+
 // Placeholder commands (will be implemented later)
-program
-  .command('code')
-  .description('Start coding assistant')
-  .action(() => {
-    console.log(chalk.yellow('⚠️  Code command coming soon!'));
-    console.log(chalk.gray('This will start the agentic coding assistant.'));
-  });
 
 program
   .command('ask <question>')
