@@ -19,15 +19,15 @@ const program = new Command();
 function showBanner() {
   try {
     console.log(
-      gradient.pastel.multiline(
+      gradient.passion.multiline(
         figlet.textSync('MegaCLI', {
           font: 'ANSI Shadow',
-          horizontalLayout: 'default',
+          horizontalLayout: 'fitted',
         })
       )
     );
-    console.log(chalk.cyan('  Access 70+ AI models from your terminal\n'));
-    console.log(chalk.gray('  Powered by MegaLLM • https://megallm.io\n'));
+    console.log(chalk.cyan.bold('  🚀 Access 70+ AI Models from Your Terminal\n'));
+    console.log(chalk.gray('  Official CLI for MegaLLM • https://megallm.io\n'));
   } catch (error) {
     // Fallback if figlet fails
     console.log(chalk.cyan.bold('\n  MegaCLI\n'));

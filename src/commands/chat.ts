@@ -58,7 +58,10 @@ class ChatSession {
   showWelcome() {
     console.log(
       createBox(
-        `🤖 Interactive Chat Mode\n\nModel: ${getModelDisplayName(this.currentModel)}`,
+        `🤖 ${chalk.bold('Interactive Chat Mode')}\n\n` +
+        `Model: ${chalk.cyan(getModelDisplayName(this.currentModel))}\n` +
+        `Temperature: ${chalk.yellow(this.temperature.toString())} | ` +
+        `Max Tokens: ${chalk.yellow(this.maxTokens.toString())}`,
         'MegaCLI Chat'
       )
     );
